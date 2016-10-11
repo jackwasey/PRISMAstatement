@@ -93,5 +93,6 @@ prisma <- function(found, found_other,
             no_dupes,
             screened, screen_exclusions,
             full_text, full_text_exclusions,
-            qualitative, quantitative), ...)
+            qualitative, quantitative),
+    ...)
 }
