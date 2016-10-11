@@ -4,9 +4,10 @@ language: R
 sudo: false
 cache: packages
 
-
-r_github_packages:
-  - jimhester/lintr
+r:
+  - oldrel
+  - release
+  - devel
 
 warnings_are_errors: true
 
