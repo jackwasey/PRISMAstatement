@@ -1,5 +1,5 @@
-Package: prisma
-Title: Plot flow charts according to the PRISMA statement
+Package: PRISMAstatement
+Title: Plot flow charts according to the 'PRISMA'use statement
 Version: 1.0
 Authors@R: person("Jack O. Wasey", role = c("aut", "cre", "cph"), email = "jack@jackwasey.com")
 Description: Plot a PRISMA flow chart describing the identification, screening,
