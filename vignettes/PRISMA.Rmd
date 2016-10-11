@@ -1,8 +1,9 @@
 ---
 title: "Make PRISMA flow chart"
 author: "Jack O. Wasey"
-date: "October 11, 2016"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: PRISMA.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Vignette Title}
@@ -14,7 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 suppressPackageStartupMessages(library(DiagrammeR))
 ```
 
-## Generate a PRISMA flow chart
+# The PRISMA Statement
+
+The [PRISMA](http://prisma-statement.org/) working group set out recommendations for describing study identification, screening, eligibility and inclusion in systematic reviews. [@moher_preferred_2009]
+
+# Generate a PRISMA flow chart
 
 ```{r prisma}
 library(prisma)
@@ -30,3 +35,5 @@ prisma(found = 750,
        quantitative = 319,
        width = 800, height = 800)
 ```
+
+# References
