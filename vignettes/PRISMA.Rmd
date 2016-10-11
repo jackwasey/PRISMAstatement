@@ -17,12 +17,18 @@ suppressPackageStartupMessages(library(DiagrammeR))
 
 # The PRISMA Statement
 
-The [PRISMA](http://prisma-statement.org/) working group set out recommendations for describing study identification, screening, eligibility and inclusion in systematic reviews. [@moher_preferred_2009]
+This package plots a [PRISMA](http://prisma-statement.org/) flow chart
+    describing the identification, screening, eligibility and inclusion or studies in
+    systematic reviews. PRISMA is an evidence-based minimum set of items for reporting
+    in systematic reviews and meta-analyses. PRISMA focuses on the reporting of reviews
+    evaluating randomized trials, but can also be used as a basis for reporting
+    systematic reviews of other types of research, particularly evaluations of
+    interventions. [@moher_preferred_2009]
 
 # Generate a PRISMA flow chart
 
 ```{r prisma}
-library(prisma)
+library(PRISMAstatement)
 
 prisma(found = 750,
        found_other = 123,

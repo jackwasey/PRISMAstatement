@@ -2,12 +2,13 @@ Package: PRISMAstatement
 Title: Plot Flow Charts According to the "PRISMA" Statement
 Version: 1.0.1
 Authors@R: person("Jack O. Wasey", role = c("aut", "cre", "cph"), email = "jack@jackwasey.com")
-Description: Plot a PRISMA flow chart describing the identification, screening,
-    eligibility and inclusion or studies in systematic reviews. PRISMA is an
-    evidence-based minimum set of items for reporting in systematic reviews
-    and meta-analyses. PRISMA focuses on the reporting of reviews evaluating
-    randomized trials, but can also be used as a basis for reporting systematic
-    reviews of other types of research, particularly evaluations of interventions.
+Description: This package plots a PRISMA <http://prisma-statement.org/> flow chart
+    describing the identification, screening, eligibility and inclusion or studies in
+    systematic reviews. PRISMA is an evidence-based minimum set of items for reporting
+    in systematic reviews and meta-analyses. PRISMA focuses on the reporting of reviews
+    evaluating randomized trials, but can also be used as a basis for reporting
+    systematic reviews of other types of research, particularly evaluations of
+    interventions.
 URL: URL: https://github.com/jackwasey/PRISMAstatementlint
 Imports:
     DiagrammeR
