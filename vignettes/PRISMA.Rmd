@@ -1,0 +1,32 @@
+---
+title: "Make PRISMA flow chart"
+author: "Jack O. Wasey"
+date: "October 11, 2016"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages(library(DiagrammeR))
+```
+
+## Generate a PRISMA flow chart
+
+```{r prisma}
+library(prisma)
+
+prisma(found = 750,
+       found_other = 123,
+       no_dupes = 776, 
+       screened = 776, 
+       screen_exclusions = 13, 
+       full_text = 763,
+       full_text_exclusions = 17, 
+       qualitative = 746, 
+       quantitative = 319,
+       width = 800, height = 800)
+```
