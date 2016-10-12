@@ -9,7 +9,7 @@ Description: Plot a PRISMA <http://prisma-statement.org/> flow chart
     evaluating randomized trials, but can also be used as a basis for reporting
     systematic reviews of other types of research, particularly evaluations of
     interventions.
-URL: URL: https://github.com/jackwasey/PRISMAstatement
+URL: https://github.com/jackwasey/PRISMAstatement
 Imports:
     DiagrammeR
 License: GPL-3
