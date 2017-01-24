@@ -11,10 +11,14 @@ r:
 
 warnings_are_errors: true
 
+r_github_packages:
+ - jimhester/covr
+
 notifications:
   email:
     on_success: change
     on_failure: change
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+ - Rscript -e 'covr::coveralls()'
+
