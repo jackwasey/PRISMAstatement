@@ -15,12 +15,12 @@
 #' @param dpi Dots per inch, 72 is the default here, and in \code{DiagrammeR}
 #'   itself it claims to be 96. Varying the DPI (which is done in the DOT file)
 #'   unfortunately does not get detected by the downstream processing by the
-#'   `htmlwidgets` package. To overcome this, the user can add `height` and
+#'   'htmlwidgets' package. To overcome this, the user can add `height` and
 #'   `width` arguments which are passed through. It is easy to for scaled graphs
 #'   to fall off the canvas, or be crushed into the top-left corner, and
 #'   unfortunately this requires trial and error. Increasing DPI over 72 with
 #'   this setting tends to truncate the graph. On the other hand, leaving the
-#'   DPI at 72 and increasing both height and width appears to consitently give
+#'   DPI at 72 and increasing both height and width appears to consistently give
 #'   higher resolution images.
 #' @param ... Further arguments are passed to \code{grViz}
 #' @source
