@@ -11,7 +11,7 @@ test_that("prisma runs without error", {
            full_text_exclusions = 17,
            qualitative = 746,
            quantitative = 319),
-    NA)
+    regexp = NA)
 })
 
 test_that("prisma passes values to grViz", {
@@ -26,7 +26,7 @@ test_that("prisma passes values to grViz", {
            qualitative = 746,
            quantitative = 319,
            width = 800, height = 800),
-    NA)
+    regexp = NA)
 })
 
 test_that("all values could be zero", {
@@ -41,7 +41,23 @@ test_that("all values could be zero", {
            qualitative = 0,
            quantitative = 0,
            width = 800, height = 800),
-    NA)
+    regexp = NA)
+})
+
+test_that("can vary DPI", {
+  expect_error(
+    prisma(found = 0,
+           found_other = 0,
+           no_dupes = 0,
+           screened = 0,
+           screen_exclusions = 0,
+           full_text = 0,
+           full_text_exclusions = 0,
+           qualitative = 0,
+           quantitative = 0,
+           width = 800, height = 800,
+           dpi = 300),
+    regexp = NA)
 })
 
 # someday: later numbers must be lower or equal to earlier ones in the sequence.

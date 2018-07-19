@@ -1,23 +1,29 @@
 Package: PRISMAstatement
 Title: Plot Flow Charts According to the "PRISMA" Statement
-Version: 1.0.1
-Authors@R: person("Jack O. Wasey", role = c("aut", "cre", "cph"), email = "jack@jackwasey.com")
-Description: Plot a PRISMA <http://prisma-statement.org/> flow chart
-    describing the identification, screening, eligibility and inclusion or studies in
-    systematic reviews. PRISMA is an evidence-based minimum set of items for reporting
-    in systematic reviews and meta-analyses. PRISMA focuses on the reporting of reviews
-    evaluating randomized trials, but can also be used as a basis for reporting
-    systematic reviews of other types of research, particularly evaluations of
-    interventions.
+Version: 1.0.2
+Authors@R: 
+    person(given = "Jack O. Wasey",
+           role = c("aut", "cre", "cph"),
+           email = "jack@jackwasey.com")
+Description: Plot a PRISMA <http://prisma-statement.org/> flow
+    chart describing the identification, screening, eligibility and
+    inclusion or studies in systematic reviews. PRISMA is an
+    evidence-based minimum set of items for reporting in systematic
+    reviews and meta-analyses. PRISMA focuses on the reporting of reviews
+    evaluating randomized trials, but can also be used as a basis for
+    reporting systematic reviews of other types of research, particularly
+    evaluations of interventions.
+License: GPL-3
 URL: https://github.com/jackwasey/PRISMAstatement
+BugReports: https://github.com/jackwasey/PRISMAstatement/issues
 Imports:
     DiagrammeR
-License: GPL-3
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 5.0.1
-BugReports: https://github.com/jackwasey/PRISMAstatement/issues
-Suggests: testthat,
+Suggests: 
+    testthat,
     knitr,
     rmarkdown
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1

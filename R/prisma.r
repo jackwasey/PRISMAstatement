@@ -12,9 +12,19 @@
 #' @param qualitative Studies included in qualitative analysis
 #' @param quantitative Studies included in quantitative synthesis
 #'   (meta-analysis)
+#' @param dpi Dots per inch, 72 is the default here, and in \code{DiagrammeR}
+#'   itself it claims to be 96. Varying the DPI (which is done in the DOT file)
+#'   unfortunately does not get detected by the downstream processing by the
+#'   `htmlwidgets` package. To overcome this, the user can add `height` and
+#'   `width` arguments which are passed through. It is easy to for scaled graphs
+#'   to fall off the canvas, or be crushed into the top-left corner, and
+#'   unfortunately this requires trial and error. Increasing DPI over 72 with
+#'   this setting tends to truncate the graph. On the other hand, leaving the
+#'   DPI at 72 and increasing both height and width appears to consitently give
+#'   higher resolution images.
 #' @param ... Further arguments are passed to \code{grViz}
 #' @source
-#'   \url{http://www.prisma-statement.org/PRISMAStatement/FlowDiagram.aspx}
+#' \url{http://www.prisma-statement.org/PRISMAStatement/FlowDiagram.aspx}
 #' @examples
 #' prisma(1, 2, 3, 4, 5, 6, 7, 8, 9)
 #' @export
@@ -23,7 +33,7 @@ prisma <- function(found, found_other,
                    screened, screen_exclusions,
                    full_text, full_text_exclusions,
                    qualitative,
-                   quantitative, ...) {
+                   quantitative, ..., dpi = 72) {
 
   stopifnot(length(found) == 1)
   stopifnot(length(found_other) == 1)
@@ -55,12 +65,10 @@ prisma <- function(found, found_other,
   stopifnot(qualitative >= 0)
   stopifnot(quantitative >= 0)
 
-  requireNamespace("DiagrammeR")
-
   dot_template <- 'digraph prisma {
 
     node [shape="box"];
-    graph [splines=ortho, nodesep=1]
+    graph [splines=ortho, nodesep=1, dpi = %d]
 
     a -> nodups;
     b -> nodups;
@@ -89,6 +97,7 @@ prisma <- function(found, found_other,
 
   DiagrammeR::grViz(
     sprintf(dot_template,
+            dpi,
             found, found_other,
             no_dupes,
             screened, screen_exclusions,

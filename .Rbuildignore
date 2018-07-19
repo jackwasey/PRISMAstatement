@@ -4,4 +4,4 @@
 ^\.travis\.yml$
 ^\.lintr
 ^appveyor\.yml$
-^wercker\.yml$
+^dot$

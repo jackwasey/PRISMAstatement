@@ -1,8 +1,0 @@
-box: rocker/hadleyverse
-build:
-  steps:
-    - install-packages
-    - jimhester/r-dependencies
-    - jimhester/r-lint
-    - jimhester/r-check
-    - jimhester/r-coverage

@@ -1,12 +1,12 @@
 ---
-title: "Make PRISMA flow chart"
+title: "Make a PRISMA flow chart"
 author: "Jack O. Wasey"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: PRISMA.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Make a PRISMA flow chart}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -41,5 +41,52 @@ prisma(found = 750,
        quantitative = 319,
        width = 800, height = 800)
 ```
+
+# Take care modifying the width, height and DPI
+
+For publication quality graphics, a certain number of DPI is often requested. This is difficult to achieve with the chain of tools that PRISMAstatement uses (DiagrammeR, htmlwidgets), and also affected by the output container which may be a PDF vignette, file, browser window, etc..
+
+```{r prismadpi1, fig.cap="just set width and height"}
+prisma(found = 750,
+       found_other = 123,
+       no_dupes = 776, 
+       screened = 776, 
+       screen_exclusions = 13, 
+       full_text = 763,
+       full_text_exclusions = 17, 
+       qualitative = 746, 
+       quantitative = 319,
+       width = 200, height = 200)
+```
+
+```{r prismadpi2, fig.cap="same width and height but DPI increased to 300"}
+prisma(found = 750,
+       found_other = 123,
+       no_dupes = 776, 
+       screened = 776, 
+       screen_exclusions = 13, 
+       full_text = 763,
+       full_text_exclusions = 17, 
+       qualitative = 746, 
+       quantitative = 319,
+       width = 200, height = 200,
+       dpi = 300)
+```
+
+```{r prismadpi3, fig.cap="same width and height but DPI decreased to 36"}
+prisma(found = 750,
+       found_other = 123,
+       no_dupes = 776, 
+       screened = 776, 
+       screen_exclusions = 13, 
+       full_text = 763,
+       full_text_exclusions = 17, 
+       qualitative = 746, 
+       quantitative = 319,
+       width = 200, height = 200,
+       dpi = 36)
+```
+
+My recommendation is to leave DPI at the default (72), and change the canvas size to achieve the correct number of pixels to fit the width of your target document. Tweaking the DPI may help (or cause) clipping.
 
 # References
