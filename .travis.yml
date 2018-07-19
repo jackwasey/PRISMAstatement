@@ -15,8 +15,9 @@ r_packages:
   - covr
   - lintr
 
-allow_failures:
-  - r: oldrel
+matrix:
+  allow_failures:
+    - r: oldrel
 
 warnings_are_errors: true
 
