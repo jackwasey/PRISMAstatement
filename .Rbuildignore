@@ -5,3 +5,5 @@
 ^\.lintr
 ^appveyor\.yml$
 ^dot$
+^README\.Rmd$
+^README\.html$

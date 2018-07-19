@@ -9,11 +9,16 @@ r:
   - release
   - devel
 
-warnings_are_errors: true
+r_packages:
+  - knitr
+  - rmarkdown
+  - covr
+  - lintr
 
-r_github_packages:
- - jimhester/covr
- - jimhester/lintr
+allow_failures:
+  - r: oldrel
+
+warnings_are_errors: true
 
 notifications:
   email:
