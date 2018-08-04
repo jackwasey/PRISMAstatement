@@ -5,12 +5,12 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: PRISMA.bib
 vignette: >
-  %\VignetteEngine{knitr::rmarkdown}
+%\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Make a PRISMA flow chart}
   %\VignetteEncoding{UTF-8}
----
-
-```{r setup, include=FALSE}
+  ---
+  
+  ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 suppressPackageStartupMessages(library(DiagrammeR))
 ```
@@ -18,12 +18,12 @@ suppressPackageStartupMessages(library(DiagrammeR))
 # The PRISMA Statement
 
 This package plots a [PRISMA](http://prisma-statement.org/) flow chart
-    describing the identification, screening, eligibility and inclusion or studies in
-    systematic reviews. PRISMA is an evidence-based minimum set of items for reporting
-    in systematic reviews and meta-analyses. PRISMA focuses on the reporting of reviews
-    evaluating randomized trials, but can also be used as a basis for reporting
-    systematic reviews of other types of research, particularly evaluations of
-    interventions. [@moher_preferred_2009]
+describing the identification, screening, eligibility and inclusion or studies in
+systematic reviews. PRISMA is an evidence-based minimum set of items for reporting
+in systematic reviews and meta-analyses. PRISMA focuses on the reporting of reviews
+evaluating randomized trials, but can also be used as a basis for reporting
+systematic reviews of other types of research, particularly evaluations of
+interventions. [@moher_preferred_2009]
 
 # Generate a PRISMA flow chart
 
@@ -127,4 +127,24 @@ prisma(found = 750,
 
 My recommendation is to leave DPI at the default (72), and change the canvas size to achieve the correct number of pixels to fit the width of your target document. Tweaking the DPI may help (or cause) clipping.
 
+## Publications
+
+It may be useful for publications to have a separate high-quality PDF of the PRISMA flow chart. An experimental internal function can do something like this:
+```{r prismapdf, echo = TRUE, eval = FALSE}
+prsm <- prisma(found = 750,
+               found_other = 123,
+               no_dupes = 776, 
+               screened = 776, 
+               screen_exclusions = 13, 
+               full_text = 763,
+               full_text_exclusions = 17, 
+               qualitative = 746, 
+               quantitative = 319,
+               width = 200, height = 200,
+               dpi = 36)
+tmp_pdf <- tempfile()
+PRISMAstatement:::prisma_pdf(prsm, tmp_pdf)
+knitr::include_graphics(path = tmp_pdf)
+unlink(tmp_pdf)
+```
 # References

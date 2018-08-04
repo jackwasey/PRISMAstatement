@@ -95,3 +95,13 @@ test_that("numbers must work together", {
   expect_warning(prisma(1000, 20, 270, 270, 10, 260, 19, 240, 107))
   expect_warning(prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107))
 })
+
+context("pdf")
+
+test_that("create PDF output", {
+  tmp_pdf <- tempfile()
+  on.exit(unlink(tmp_pdf), add = TRUE)
+  prsm <- prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107)
+  PRISMAstatement:::prisma_pdf(prsm, tmp_pdf)
+  expect_true(file.size(tmp_pdf) > 0)
+})

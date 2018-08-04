@@ -19,9 +19,11 @@ BugReports: https://github.com/jackwasey/PRISMAstatement/issues
 Imports:
     DiagrammeR
 Suggests: 
-    testthat,
+    DiagrammeRsvg,
     knitr,
-    rmarkdown
+    rmarkdown,
+    rsvg,
+    testthat
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

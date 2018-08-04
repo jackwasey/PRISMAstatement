@@ -58,7 +58,7 @@ prisma <- function(found,
                    full_text,
                    full_text_exclusions,
                    qualitative,
-                   quantitative,
+                   quantitative = NULL,
                    labels = NULL,
                    extra_dupes_box = FALSE,
                    ..., dpi = 72) {
@@ -70,8 +70,9 @@ prisma <- function(found,
   stopifnot(length(full_text) == 1)
   stopifnot(length(full_text_exclusions) == 1)
   stopifnot(length(qualitative) == 1)
-  stopifnot(length(quantitative) == 1)
+  stopifnot(is.null(quantitative) || length(quantitative) == 1)
   # each number should be a non-negative integer (but may be 'numeric' type)
+  # stopifnot(is.null(quantitative) || length(quantitative) == 1)
   stopifnot(found == floor(found))
   stopifnot(found_other == floor(found_other))
   stopifnot(no_dupes == floor(no_dupes))
@@ -80,7 +81,7 @@ prisma <- function(found,
   stopifnot(full_text == floor(full_text))
   stopifnot(full_text_exclusions == floor(full_text_exclusions))
   stopifnot(qualitative == floor(qualitative))
-  stopifnot(quantitative == floor(quantitative))
+  stopifnot(is.null(quantitative) || quantitative == floor(quantitative))
   stopifnot(found >= 0)
   stopifnot(found_other >= 0)
   stopifnot(no_dupes >= 0)
@@ -89,7 +90,7 @@ prisma <- function(found,
   stopifnot(full_text >= 0)
   stopifnot(full_text_exclusions >= 0)
   stopifnot(qualitative >= 0)
-  stopifnot(quantitative >= 0)
+  stopifnot(is.null(quantitative) || quantitative >= 0)
   # can't have more articles at any stage
   stopifnot(no_dupes <= found + found_other)
   stopifnot(screened <= no_dupes)
@@ -142,36 +143,27 @@ prisma <- function(found,
     dupes_box <- sprintf(
       'nodups -> {incex; dups};
        nodups [label="%s"];
-
        dups [label="%s"]; {rank=same; nodups dups}',
       labels$no_dupes, labels$dupes)
 
   dot_template <- 'digraph prisma {
-
     node [shape="box"];
     graph [splines=ortho, nodesep=1, dpi = %d]
-
     a -> nodups;
     b -> nodups;
     a [label="%s"];
     b [label="%s"]
-
     %s
-
     incex -> {ex; ft}
     incex [label="%s"];
-
     ex [label="%s"];
     {rank=same; incex ex}
-
     ft -> {qual; ftex};
     ft [label="%s"];
     {rank=same; ft ftex}
     ftex [label="%s"];
-
     qual -> quant
     qual [label="%s"];
-
     quant [label="%s"];
   }'
 
@@ -195,3 +187,24 @@ paren <- function(n)
 
 pnl <- function(...)
   paste(..., sep = "\n")
+
+#' Make PDF of the plot
+#'
+#' This makes a PDF file which can be included by knitr Sweave.
+#' @param x output of call to \code{prisma}
+#' @param filename path of output file
+#' @importFrom utils capture.output
+#' @examples
+#' \dontrun{
+#' g <- prisma(9, 8, 7, 6, 5, 4, 3, 2, 1)
+#' prisma_pdf(g, "test.pdf")
+#' knitr::include_graphics("test.pdf")
+#' }
+#' @keywords internal
+prisma_pdf <- function(x, filename = "prisma.pdf") {
+  utils::capture.output({
+    rsvg::rsvg_pdf(svg = charToRaw(DiagrammeRsvg::export_svg(x)),
+                   file = filename)
+  })
+  invisible()
+}

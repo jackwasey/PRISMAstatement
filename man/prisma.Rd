@@ -8,7 +8,7 @@
 }
 \usage{
 prisma(found, found_other, no_dupes, screened, screen_exclusions,
-  full_text, full_text_exclusions, qualitative, quantitative,
+  full_text, full_text_exclusions, qualitative, quantitative = NULL,
   labels = NULL, extra_dupes_box = FALSE, ..., dpi = 72)
 }
 \arguments{
