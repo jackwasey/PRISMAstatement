@@ -1,7 +1,8 @@
-#' generate PRISMA statement flow chart
+#' Generate a PRISMA statement flow chart
 #'
-#' generate PRISMA statement flow chart for use in retrospective medical
-#' research
+#' Generate PRISMA statement flow chart for use in retrospective medical
+#' research. Almost all arguments are mandatory, as they are in the recommended
+#' PRISMA statement.
 #' @param found Records found through database searching
 #' @param found_other Additional records identified through other sources
 #' @param no_dupes Records after duplicates removed
@@ -22,19 +23,37 @@
 #'   this setting tends to truncate the graph. On the other hand, leaving the
 #'   DPI at 72 and increasing both height and width appears to consistently give
 #'   higher resolution images.
+#' @param labels \code{NULL} is the default, but if a named list of character
+#'   strings, the box matching each name will get the corresponding label. See
+#'   examples.
 #' @param ... Further arguments are passed to \code{grViz}
-#' @source
-#' \url{http://www.prisma-statement.org/PRISMAStatement/FlowDiagram.aspx}
+#' @param extra_dupes_box Single logical value, default is \code{FALSE} which
+#'   corresponds to the example 2009 PRISMA Statement Flow Chart. If
+#'   \code{TRUE}, then an additional box will be presented indicating the number
+#'   of duplicates removed, calculated from the other numbers.
+#' @source \url{http://prisma-statement.org/PRISMAStatement/FlowDiagram}
 #' @examples
+#' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107)
+#' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107,
+#'        labels = list(found = "FOUND"))
+#' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, dpi = 24)
+#' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, extra_dupes_box = TRUE)
+#' \dontrun{
+#' # giving impossible numbers should cause an error
 #' prisma(1, 2, 3, 4, 5, 6, 7, 8, 9)
+#' # giving unlikely numbers should cause a warning
+#' prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107)
+#' }
 #' @export
 prisma <- function(found, found_other,
                    no_dupes,
                    screened, screen_exclusions,
                    full_text, full_text_exclusions,
                    qualitative,
-                   quantitative, ..., dpi = 72) {
-
+                   quantitative,
+                   labels = NULL,
+                   extra_dupes_box = FALSE,
+                   ..., dpi = 72) {
   stopifnot(length(found) == 1)
   stopifnot(length(found_other) == 1)
   stopifnot(length(no_dupes) == 1)
@@ -44,7 +63,7 @@ prisma <- function(found, found_other,
   stopifnot(length(full_text_exclusions) == 1)
   stopifnot(length(qualitative) == 1)
   stopifnot(length(quantitative) == 1)
-
+  # each number should be a non-negative integer (but may be 'numeric' type)
   stopifnot(found == floor(found))
   stopifnot(found_other == floor(found_other))
   stopifnot(no_dupes == floor(no_dupes))
@@ -54,7 +73,6 @@ prisma <- function(found, found_other,
   stopifnot(full_text_exclusions == floor(full_text_exclusions))
   stopifnot(qualitative == floor(qualitative))
   stopifnot(quantitative == floor(quantitative))
-
   stopifnot(found >= 0)
   stopifnot(found_other >= 0)
   stopifnot(no_dupes >= 0)
@@ -64,6 +82,61 @@ prisma <- function(found, found_other,
   stopifnot(full_text_exclusions >= 0)
   stopifnot(qualitative >= 0)
   stopifnot(quantitative >= 0)
+  # can't have more articles at any stage
+  stopifnot(no_dupes <= found + found_other)
+  stopifnot(screened <= no_dupes)
+  stopifnot(full_text <= screened)
+  stopifnot(qualitative <= full_text)
+  stopifnot(quantitative <= qualitative)
+  # exclusions can't be greater than what they excluded from
+  stopifnot(screen_exclusions <= screened)
+  stopifnot(full_text_exclusions <= full_text)
+  if (screened - screen_exclusions != full_text)
+    warning("After screening exclusions, a different number of remaining ",
+            "full-text articles is stated.")
+  if (full_text - full_text_exclusions != qualitative)
+    warning("After full-text exclusions, a different number of remaining ",
+            "articles for qualitative synthesis is stated.")
+  dupes <- found + found_other - no_dupes
+  labels_ <- list(
+    found = pnl("Records identified through",
+                "database searching",
+                paren(found)),
+    found_other = pnl("Additional records identified",
+                      "through other sources",
+                      paren(found_other)),
+    no_dupes = pnl("Records after duplicates removed", paren(no_dupes)),
+    dupes = pnl("Duplicates excluded", paren(dupes)),
+    screened = pnl("Records screened", paren(screened)),
+    screen_exclusions = pnl("Records excluded", paren(screen_exclusions)),
+    full_text = pnl("Full-text articles assessed",
+                    "for eligibility",
+                    paren(full_text)),
+    full_text_exclusions =
+      sprintf("Full-text articles excluded,",
+              "with reasons",
+              paren(full_text_exclusions)),
+    qualitative = pnl("Studies included in qualitative synthesis",
+                      paren(qualitative)),
+    quantitative = pnl("Studies included in",
+                       "quantitative synthesis",
+                       "(meta-analysis)",
+                       paren(quantitative))
+  )
+  for (l in names(labels))
+    labels_[[l]] <- labels[[l]]
+  labels <- labels_
+  dupes_box <- sprintf(
+    'nodups -> incex;
+    nodups [label="%s"];',
+    labels$no_dupes)
+  if (extra_dupes_box)
+    dupes_box <- sprintf(
+      'nodups -> {incex; dups};
+       nodups [label="%s"];
+
+       dups [label="%s"]; {rank=same; nodups dups}',
+      labels$no_dupes, labels$dupes)
 
   dot_template <- 'digraph prisma {
 
@@ -72,36 +145,45 @@ prisma <- function(found, found_other,
 
     a -> nodups;
     b -> nodups;
-    a [label="Records identified through\ndatabase searching\n(n = %d)"];
-    b [label="Additional records identified\nthrough other sources\n(n = %d)"]
+    a [label="%s"];
+    b [label="%s"]
 
-    nodups -> incex;
-    nodups [label="Records after duplicates removed\n(n = %d)"];
+    %s
 
     incex -> {ex; ft}
-    incex [label="Records screened\n(n = %d)"];
+    incex [label="%s"];
 
-    ex [label="Records excluded\n(n = %d)"];
+    ex [label="%s"];
     {rank=same; incex ex}
 
     ft -> {qual; ftex};
-    ft [label="Full-text articles assessed\nfor eligibility\n(n = %d)"];
+    ft [label="%s"];
     {rank=same; ft ftex}
-    ftex [label="Full-text articles excluded,\nwith reasons\n(n = %d)"];
+    ftex [label="%s"];
 
     qual -> quant
-    qual [label="Studies included in qualitative synthesis\n(n = %d)"];
+    qual [label="%s"];
 
-    quant [label="Studies included in\nquantitative synthesis\n(meta-analysis)\n(n = %d)"];
+    quant [label="%s"];
   }'
 
   DiagrammeR::grViz(
     sprintf(dot_template,
             dpi,
-            found, found_other,
-            no_dupes,
-            screened, screen_exclusions,
-            full_text, full_text_exclusions,
-            qualitative, quantitative),
+            labels$found,
+            labels$found_other,
+            dupes_box,
+            labels$screened,
+            labels$screen_exclusions,
+            labels$full_text,
+            labels$full_text_exclusions,
+            labels$qualitative,
+            labels$quantitative),
     ...)
 }
+
+paren <- function(n)
+  sprintf("(n = %d)", n)
+
+pnl <- function(...)
+  paste(..., sep = "\n")

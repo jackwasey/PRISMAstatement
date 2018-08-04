@@ -2,13 +2,14 @@
 % Please edit documentation in R/prisma.r
 \name{prisma}
 \alias{prisma}
-\title{generate PRISMA statement flow chart}
+\title{Generate a PRISMA statement flow chart}
 \source{
-\url{http://www.prisma-statement.org/PRISMAStatement/FlowDiagram.aspx}
+\url{http://prisma-statement.org/PRISMAStatement/FlowDiagram}
 }
 \usage{
-prisma(found, found_other, no_dupes, screened, screen_exclusions, full_text,
-  full_text_exclusions, qualitative, quantitative, ..., dpi = 72)
+prisma(found, found_other, no_dupes, screened, screen_exclusions,
+  full_text, full_text_exclusions, qualitative, quantitative,
+  labels = NULL, extra_dupes_box = FALSE, ..., dpi = 72)
 }
 \arguments{
 \item{found}{Records found through database searching}
@@ -30,6 +31,15 @@ prisma(found, found_other, no_dupes, screened, screen_exclusions, full_text,
 \item{quantitative}{Studies included in quantitative synthesis
 (meta-analysis)}
 
+\item{labels}{\code{NULL} is the default, but if a named list of character
+strings, the box matching each name will get the corresponding label. See
+examples.}
+
+\item{extra_dupes_box}{Single logical value, default is \code{FALSE} which
+corresponds to the example 2009 PRISMA Statement Flow Chart. If
+\code{TRUE}, then an additional box will be presented indicating the number
+of duplicates removed, calculated from the other numbers.}
+
 \item{...}{Further arguments are passed to \code{grViz}}
 
 \item{dpi}{Dots per inch, 72 is the default here, and in \code{DiagrammeR}
@@ -44,9 +54,20 @@ DPI at 72 and increasing both height and width appears to consistently give
 higher resolution images.}
 }
 \description{
-generate PRISMA statement flow chart for use in retrospective medical
-research
+Generate PRISMA statement flow chart for use in retrospective medical
+research. Almost all arguments are mandatory, as they are in the recommended
+PRISMA statement.
 }
 \examples{
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107)
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107,
+       labels = list(found = "FOUND"))
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, dpi = 24)
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, extra_dupes_box = TRUE)
+\dontrun{
+# giving impossible numbers should cause an error
 prisma(1, 2, 3, 4, 5, 6, 7, 8, 9)
+# giving unlikely numbers should cause a warning
+prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107)
+}
 }

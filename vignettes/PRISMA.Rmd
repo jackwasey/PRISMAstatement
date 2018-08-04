@@ -28,6 +28,7 @@ This package plots a [PRISMA](http://prisma-statement.org/) flow chart
 # Generate a PRISMA flow chart
 
 ```{r prisma}
+#install.packages("PRISMAstatement")
 library(PRISMAstatement)
 
 prisma(found = 750,
@@ -40,6 +41,29 @@ prisma(found = 750,
        qualitative = 746, 
        quantitative = 319,
        width = 800, height = 800)
+```
+
+# Tweaks
+
+Ideally, you will stick closely to the PRISMA statement, but small deviations are common. `PRISMAstatement` gives the option of adding a box which simply calculates the number of duplicates removed.
+
+```{r prismadupesbox}
+prisma(found = 750,
+       found_other = 123,
+       no_dupes = 776, 
+       screened = 776, 
+       screen_exclusions = 13, 
+       full_text = 763,
+       full_text_exclusions = 17, 
+       qualitative = 746, 
+       quantitative = 319,
+       extra_dupes_box = TRUE)
+```
+
+You can also change the labels, but you will have to insert the number for any label you change. E.g.,
+```{r labels}
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107,
+       labels = list(found = "FOUND", found_other = "OTHER"))
 ```
 
 # Take care modifying the width, height and DPI
