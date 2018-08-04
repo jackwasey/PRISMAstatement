@@ -20,22 +20,16 @@ knitr::opts_chunk$set(
 [![Coverage status](https://codecov.io/gh/jackwasey/PRISMAstatement/branch/master/graph/badge.svg)](https://codecov.io/github/jackwasey/PRISMAstatement?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/PRISMAstatement)](https://cran.r-project.org/package=PRISMAstatement)
 
-PRISMAstatement is a simple package which does one thing: generate publication quality flow charts of study inclusions and exclusions following recommendations of the PRISMA statement. See the vignette for more details.
+PRISMAstatement is a simple package which does one thing: generate publication quality flow charts of study inclusions and exclusions following recommendations of the PRISMA statement. See the [vignette](https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html) for more details.
 
 ## Installation
 
 You can install the released version of PRISMAstatement from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```{r eval=FALSE}
 install.packages("PRISMAstatement")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("jackwasey/PRISMAstatement")
-```
 ## Example
 
 ```{r buildexample}

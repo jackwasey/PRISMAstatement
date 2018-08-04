@@ -16,8 +16,9 @@ status](https://www.r-pkg.org/badges/version/PRISMAstatement)](https://cran.r-pr
 
 PRISMAstatement is a simple package which does one thing: generate
 publication quality flow charts of study inclusions and exclusions
-following recommendations of the PRISMA statement. See the vignette for
-more details.
+following recommendations of the PRISMA statement. See the
+[vignette](https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html)
+for more details.
 
 ## Installation
 
@@ -26,13 +27,6 @@ You can install the released version of PRISMAstatement from
 
 ``` r
 install.packages("PRISMAstatement")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("jackwasey/PRISMAstatement")
 ```
 
 ## Example

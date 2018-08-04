@@ -1,6 +1,6 @@
 Package: PRISMAstatement
 Title: Plot Flow Charts According to the "PRISMA" Statement
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: 
     person(given = "Jack O. Wasey",
            role = c("aut", "cre", "cph"),
