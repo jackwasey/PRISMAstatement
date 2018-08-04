@@ -66,6 +66,20 @@ prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107,
        labels = list(found = "FOUND", found_other = "OTHER"))
 ```
 
+# Safety
+
+There are some hard constraints on the relationships between the numbers in each box, which are enforced by the `prisma` function. There are a couple of warnings given when it seems that numerically valid, but unlikely numbers are given: studies shouldn't just disappear between each step. Arguably this is a hard stop, but there might be circumstances when additional exclusions are made which could be annotated in a figure caption.
+
+```{r errors and warnings}
+tryCatch(
+  prisma(1, 2, 3, 4, 5, 6, 7, 8, 9),
+  error = function(e) e$message)
+prisma(1000, 20, 270, 270, 10, 260, 19, 240, 107, 
+       width = 100, height = 100)
+prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107, 
+       width = 100, height = 100)
+```
+
 # Take care modifying the width, height and DPI
 
 For publication quality graphics, a certain number of DPI is often requested. This is difficult to achieve with the chain of tools that PRISMAstatement uses (DiagrammeR, htmlwidgets), and also affected by the output container which may be a PDF vignette, file, browser window, etc..
