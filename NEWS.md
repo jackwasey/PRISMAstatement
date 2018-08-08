@@ -1,5 +1,10 @@
 # PRISMAstatement news
 
+## Version 1.0.4
+
+* Fix minor bug in display of text in one of the PRISMA boxes
+* Added function to give an single PDF with the diagram for publication.
+
 ## Version 1.0.3
 
 * added option of an additional box describing the (calculated) number of
