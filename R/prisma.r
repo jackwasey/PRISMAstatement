@@ -202,7 +202,7 @@ pnl <- function(...)
 #' }
 #' @keywords internal
 prisma_pdf <- function(x, filename = "prisma.pdf") {
-  if (require(DiagrammeRsvg) && require(rsvg))
+  if (requireNamespace(DiagrammeRsvg) && requireNamespace(rsvg))
     utils::capture.output({
       rsvg::rsvg_pdf(svg = charToRaw(DiagrammeRsvg::export_svg(x)),
                      file = filename)
