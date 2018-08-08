@@ -99,6 +99,9 @@ test_that("numbers must work together", {
 context("pdf")
 
 test_that("create PDF output", {
+  if (!requireNamespace("DiagrammeRsvg", quietly = TRUE) ||
+      !requireNamespace("rsvg", quietly = TRUE))
+    skip("need DiagrammeRsvg and rsvg for this test")
   tmp_pdf <- tempfile()
   on.exit(unlink(tmp_pdf), add = TRUE)
   prsm <- prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107)
