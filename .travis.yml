@@ -14,8 +14,13 @@ r_packages:
   - rmarkdown
   - covr
   - lintr
-  - DiagrammeRsvg
-  - rsvg
+#  - DiagrammeRsvg
+#  - rsvg
+#  - V8
+
+env:
+  global:
+    - _R_CHECK_FORCE_SUGGESTS_=false
 
 matrix:
   allow_failures:
