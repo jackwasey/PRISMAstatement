@@ -1,5 +1,5 @@
 ## Comments on this submission:
-Minor feature update.
+Important bug-fix
 
 ## Test environments
 * MacOS, R 3.5.1
