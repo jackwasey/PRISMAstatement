@@ -14,6 +14,8 @@ r_packages:
   - rmarkdown
   - covr
   - lintr
+  - DiagrammeRsvg
+  - rsvg
 
 matrix:
   allow_failures:
