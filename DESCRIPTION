@@ -23,7 +23,8 @@ Suggests:
     knitr,
     rmarkdown,
     rsvg,
-    testthat
+    testthat,
+    utils
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
