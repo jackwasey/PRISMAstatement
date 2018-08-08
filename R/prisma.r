@@ -72,7 +72,6 @@ prisma <- function(found,
   stopifnot(length(qualitative) == 1)
   stopifnot(is.null(quantitative) || length(quantitative) == 1)
   # each number should be a non-negative integer (but may be 'numeric' type)
-  # stopifnot(is.null(quantitative) || length(quantitative) == 1)
   stopifnot(found == floor(found))
   stopifnot(found_other == floor(found_other))
   stopifnot(no_dupes == floor(no_dupes))

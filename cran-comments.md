@@ -5,7 +5,6 @@ Important bug-fix
 * MacOS, R 3.5.1
 * Ubuntu 14.04 (on travis-ci), R 3.5.0, R-devel
 * Appveyor Windows server, R patched
-* win-builder
 
 ## R CMD check results
 
