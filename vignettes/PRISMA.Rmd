@@ -5,12 +5,12 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: PRISMA.bib
 vignette: >
-%\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Make a PRISMA flow chart}
   %\VignetteEncoding{UTF-8}
-  ---
+---
   
-  ```{r setup, include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 suppressPackageStartupMessages(library(DiagrammeR))
 ```
