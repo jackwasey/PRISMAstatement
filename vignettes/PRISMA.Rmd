@@ -80,6 +80,15 @@ prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107,
        width = 100, height = 100)
 ```
 
+# Font size
+
+The underlying `DiagrammeR` uses `htmlwidgets` to render the flow chart, and this can occasionally cause text boxes to overflow. Varying the font size using the `PRISMAstatement::prisma` argument `font_size` may help prepare a PRISMA flow chart for publication.
+
+```{r font_size}
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 6)
+prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 60)
+```
+
 # Take care modifying the width, height and DPI
 
 For publication quality graphics, a certain number of DPI is often requested. This is difficult to achieve with the chain of tools that PRISMAstatement uses (DiagrammeR, htmlwidgets), and also affected by the output container which may be a PDF vignette, file, browser window, etc..

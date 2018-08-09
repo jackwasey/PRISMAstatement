@@ -13,6 +13,14 @@
 #' @param qualitative Studies included in qualitative analysis
 #' @param quantitative Studies included in quantitative synthesis
 #'   (meta-analysis)
+#' @param labels \code{NULL} is the default, but if a named list of character
+#'   strings, the box matching each name will get the corresponding label. See
+#'   examples.
+#' @param extra_dupes_box Single logical value, default is \code{FALSE} which
+#'   corresponds to the example 2009 PRISMA Statement Flow Chart. If
+#'   \code{TRUE}, then an additional box will be presented indicating the number
+#'   of duplicates removed, calculated from the other numbers.
+#' @param ... Further arguments are passed to \code{grViz}
 #' @param dpi Dots per inch, 72 is the default here, and in \code{DiagrammeR}
 #'   itself it claims to be 96. Varying the DPI (which is done in the DOT file)
 #'   unfortunately does not get detected by the downstream processing by the
@@ -23,14 +31,10 @@
 #'   this setting tends to truncate the graph. On the other hand, leaving the
 #'   DPI at 72 and increasing both height and width appears to consistently give
 #'   higher resolution images.
-#' @param labels \code{NULL} is the default, but if a named list of character
-#'   strings, the box matching each name will get the corresponding label. See
-#'   examples.
-#' @param ... Further arguments are passed to \code{grViz}
-#' @param extra_dupes_box Single logical value, default is \code{FALSE} which
-#'   corresponds to the example 2009 PRISMA Statement Flow Chart. If
-#'   \code{TRUE}, then an additional box will be presented indicating the number
-#'   of duplicates removed, calculated from the other numbers.
+#' @param font_size integer font size in points, default is 10. `DiagrammeR` via
+#'   `htmlwidgets` should scale the boxes to include the text no matter what
+#'   size font is used. However, the heuristics are not perfect, so tweaking the
+#'   font size here may help prepare for publication.
 #' @source \url{http://prisma-statement.org/PRISMAStatement/FlowDiagram}
 #' @examples
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107)
@@ -49,6 +53,10 @@
 #' tryCatch(
 #'   prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107),
 #'   warning = function(w) w$message)
+#' # vary the font size
+#' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 6)
+#' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 60)
+#' @md
 #' @export
 prisma <- function(found,
                    found_other,
@@ -61,7 +69,9 @@ prisma <- function(found,
                    quantitative = NULL,
                    labels = NULL,
                    extra_dupes_box = FALSE,
-                   ..., dpi = 72) {
+                   ...,
+                   dpi = 72,
+                   font_size = 10) {
   stopifnot(length(found) == 1)
   stopifnot(length(found_other) == 1)
   stopifnot(length(no_dupes) == 1)
@@ -146,7 +156,7 @@ prisma <- function(found,
       labels$no_dupes, labels$dupes)
 
   dot_template <- 'digraph prisma {
-    node [shape="box"];
+    node [shape="box", fontsize = %d];
     graph [splines=ortho, nodesep=1, dpi = %d]
     a -> nodups;
     b -> nodups;
@@ -168,6 +178,7 @@ prisma <- function(found,
 
   DiagrammeR::grViz(
     sprintf(dot_template,
+            font_size,
             dpi,
             labels$found,
             labels$found_other,

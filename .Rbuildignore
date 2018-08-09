@@ -7,3 +7,5 @@
 ^dot$
 ^README\.Rmd$
 ^README\.html$
+vignettes\/.*\.pdf$
+vignettes\/.*\.tex$

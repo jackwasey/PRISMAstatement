@@ -5,3 +5,5 @@ inst/doc
 dot
 README.html
 vignettes/*.html
+vignettes/*.pdf
+vignettes/*.tex
