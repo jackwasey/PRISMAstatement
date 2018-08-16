@@ -7,12 +7,12 @@ Authors@R:
            email = "jack@jackwasey.com")
 Description: Plot a PRISMA <http://prisma-statement.org/> flow
     chart describing the identification, screening, eligibility and
-    inclusion or studies in systematic reviews. PRISMA is an
-    evidence-based minimum set of items for reporting in systematic
-    reviews and meta-analyses. PRISMA focuses on the reporting of reviews
-    evaluating randomized trials, but can also be used as a basis for
-    reporting systematic reviews of other types of research, particularly
-    evaluations of interventions.
+    inclusion or studies in systematic reviews. The PRISMA statement
+    defines an evidence-based, minimal set of items for reporting in
+    systematic reviews and meta-analyses. PRISMA should be used for the
+    reporting of studies evaluating randomized clinical trials (RCTs), and
+    is also for reporting on systematic reviews of other types of
+    research.
 License: GPL-3
 URL: https://github.com/jackwasey/PRISMAstatement
 BugReports: https://github.com/jackwasey/PRISMAstatement/issues
