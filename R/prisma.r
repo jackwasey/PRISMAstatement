@@ -42,20 +42,16 @@
 #'        labels = list(found = "FOUND"))
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, dpi = 24)
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, extra_dupes_box = TRUE)
-#' # giving impossible numbers should cause an error
-#' tryCatch(
-#'   prisma(1, 2, 3, 4, 5, 6, 7, 8, 9),
-#'   error = function(e) e$message)
-#' # giving unlikely numbers should cause a warning
-#' tryCatch(
-#'   prisma(1000, 20, 270, 270, 10, 260, 19, 240, 107),
-#'   warning = function(w) w$message)
-#' tryCatch(
-#'   prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107),
-#'   warning = function(w) w$message)
 #' # vary the font size
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 6)
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 60)
+#' # giving impossible numbers should cause an error
+#' \donttest{
+#'   prisma(1, 2, 3, 4, 5, 6, 7, 8, 9)
+#' # giving unlikely numbers should cause a warning
+#'   prisma(1000, 20, 270, 270, 10, 260, 19, 240, 107)
+#'   prisma(1000, 20, 270, 270, 269, 260, 20, 240, 107)
+#' }
 #' @md
 #' @export
 prisma <- function(found,
@@ -116,7 +112,7 @@ prisma <- function(found,
     warning("After full-text exclusions, a different number of remaining ",
             "articles for qualitative synthesis is stated.")
   dupes <- found + found_other - no_dupes
-  labels_ <- list(
+  labels_orig <- list(
     found = pnl("Records identified through",
                 "database searching",
                 paren(found)),
@@ -142,8 +138,8 @@ prisma <- function(found,
                        paren(quantitative))
   )
   for (l in names(labels))
-    labels_[[l]] <- labels[[l]]
-  labels <- labels_
+    labels_orig[[l]] <- labels[[l]]
+  labels <- labels_orig
   dupes_box <- sprintf(
     'nodups -> incex;
     nodups [label="%s"];',
@@ -214,8 +210,7 @@ pnl <- function(...)
 prisma_pdf <- function(x, filename = "prisma.pdf") {
   if (!requireNamespace("DiagrammeRsvg", quietly = TRUE) ||
       !requireNamespace("rsvg", quietly = TRUE)) {
-    message("DiagrammeRsvg and rsvg are both required for this prisma_pdf")
-    return()
+    stop("DiagrammeRsvg and rsvg are both required for this prisma_pdf")
   }
   utils::capture.output({
     rsvg::rsvg_pdf(svg = charToRaw(DiagrammeRsvg::export_svg(x)),
