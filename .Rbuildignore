@@ -9,3 +9,6 @@
 ^README\.html$
 vignettes\/.*\.pdf$
 vignettes\/.*\.tex$
+^paper\.md$
+^paper\.bib$
+^r\.bib$
