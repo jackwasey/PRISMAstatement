@@ -12,3 +12,5 @@ vignettes\/.*\.tex$
 ^paper\.md$
 ^paper\.bib$
 ^r\.bib$
+^_pkgdown\.yml$
+^mergebib\.sh$

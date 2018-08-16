@@ -4,8 +4,7 @@ author: "Jack O. Wasey"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography:
- - PRISMA.bib
- - r.bib
+ - all.bib
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{Make a PRISMA flow chart}
