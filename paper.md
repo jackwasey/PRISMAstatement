@@ -33,4 +33,8 @@ In addition to increasing the standard of research in general, the movement towa
 
 The R packages such as `ggplot2` \[@ggplot2\], `rmarkdown` \[@rmarkdown\], `rticles` \[@rticles\] give researchers the tools to produce manuscripts incorporating their analysis, figures and text, entirely within the R environment. However, plotting flow charts is not straightforward, especially not those that confirm to the specific PRISMA statement requirements. Most researchers are likely to resort to producing their PRISMA flow diagram in another application then import the resulting figure. This is a possible source of errors, and a barrier to reproducible research: with `PRISMAstatement` it is now possible to use a reproducible workflow up-to-date PRISMA flow diagram of publication quality.
 
+# Example PRISMA Statement flow chart
+
+![](paper_files/figure-gfm/buildexample-1.png)<!-- -->
+
 # References
