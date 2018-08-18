@@ -1,8 +1,11 @@
 ---
 output:
   github_document:
+    html_preview: false
+    #md_extensions: -autolink_bare_uris+hard_line_breaks
+    pandoc_args: ["--wrap=preserve"]
     includes:
-      in_header: paper.yaml
+      before_body: paper.yaml
 ---
 # Summary
 
