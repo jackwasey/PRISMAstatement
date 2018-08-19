@@ -9,10 +9,11 @@
 ^README\.html$
 vignettes\/.*\.pdf$
 vignettes\/.*\.tex$
-^paper\.md$
-^paper\.utf8\.md$
-^paper\.knit\.md$
-^paper\.bib$
-^r\.bib$
+^inst\/doc\/JOSS\/paper\.utf8\.md$
+^inst\/doc\/JOSS\/paper\.kntir\.md$
+^inst\/doc\/JOSS\/paper\.kntir\.md$
 ^_pkgdown\.yml$
 ^mergebib\.sh$
+^docs$
+^bin$
+

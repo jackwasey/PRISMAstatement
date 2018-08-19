@@ -1,25 +1,24 @@
 ---
 title: "PRISMA Statement Flow Charts for Reproducible Systematic Reviews and Meta-analyses"
 authors:
-- affiliation: '1'
-  name: Jack O Wasey
-  orcid: 0000-0003-3738-4637
-date: "16 August 2018"
+  - affiliation: 1
+    name: Jack O Wasey
+    orcid: 0000-0003-3738-4637
+date: 16 August 2018
 output: html_document
 bibliography:
-- paper.bib
-- r.bib
+  - paper.bib
+  - r.bib
 tags:
-- evidence-based medicine
-- systematic reviews
-- reproducible research
-- health research
-- graphics
+  - evidence-based medicine
+  - systematic reviews
+  - reproducible research
+  - health research
+  - graphics
 affiliations:
-- index: 1
-  name: Children's Hospital of Philadelphia
+  - index: 1
+    name: The Childrens Hospital of Philadelphia
 ---
-
 # Summary
 
 The [Preferred Reporting Items for Systematic Reviews and Meta-Analyses](http://prisma-statement.org) (PRISMA) Statement  [@moher_preferred_2009] defines an evidence-based, minimal set of items for reporting in systematic reviews and meta-analyses. PRISMA should be used for the reporting of studies evaluating randomized clinical trials (RCTs), and is also for reporting on systematic reviews of other types of research.

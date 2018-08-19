@@ -1,12 +1,3 @@
----
-output:
-  github_document:
-    html_preview: false
-    #md_extensions: -autolink_bare_uris+hard_line_breaks
-    pandoc_args: ["--wrap=preserve"]
-    includes:
-      before_body: paper.yaml
----
 # Summary
 
 The [Preferred Reporting Items for Systematic Reviews and Meta-Analyses](http://prisma-statement.org) (PRISMA) Statement  [@moher_preferred_2009] defines an evidence-based, minimal set of items for reporting in systematic reviews and meta-analyses. PRISMA should be used for the reporting of studies evaluating randomized clinical trials (RCTs), and is also for reporting on systematic reviews of other types of research.

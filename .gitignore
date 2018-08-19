@@ -1,7 +1,6 @@
 .Rproj.user
 .Rhistory
 .RData
-inst/doc
 dot
 README.html
 vignettes/*.html
@@ -9,3 +8,4 @@ vignettes/*.pdf
 vignettes/*.tex
 paper.utf8.md
 paper.knit.md
+*.swp
