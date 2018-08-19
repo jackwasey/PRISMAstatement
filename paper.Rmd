@@ -21,7 +21,7 @@ The R packages such as `ggplot2` [@ggplot2], `rmarkdown` [@rmarkdown], `rticles`
 
 # Example PRISMA Statement flow chart
 
-```{r buildexample, echo=FALSE}
+```{r buildexample, echo=FALSE, fig.cap="Example PRISMA Statement flow chart"}
 library(PRISMAstatement)
 prisma(found = 750,
        found_other = 123,

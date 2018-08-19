@@ -10,6 +10,8 @@
 vignettes\/.*\.pdf$
 vignettes\/.*\.tex$
 ^paper\.md$
+^paper\.utf8\.md$
+^paper\.knit\.md$
 ^paper\.bib$
 ^r\.bib$
 ^_pkgdown\.yml$
