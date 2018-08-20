@@ -12,6 +12,7 @@ vignettes\/.*\.tex$
 ^inst\/doc\/JOSS\/paper\.utf8\.md$
 ^inst\/doc\/JOSS\/paper\.kntir\.md$
 ^inst\/doc\/JOSS\/paper\.kntir\.md$
+^inst\/doc\/PRISMA.*$
 ^_pkgdown\.yml$
 ^mergebib\.sh$
 ^docs$
