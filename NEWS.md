@@ -1,5 +1,11 @@
 # PRISMAstatement news
 
+## Version 1.0.5
+
+* Added JOSS draft paper
+* fixed various build ignore and vignette issues
+* updated vignette with content from JOSS draft
+
 ## Version 1.0.4
 
 * Fix minor bug in display of text in one of the PRISMA boxes
