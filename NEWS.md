@@ -1,5 +1,9 @@
 # PRISMAstatement news
 
+## Version 1.1
+
+* Function to make generic flow charts with exclusions
+
 ## Version 1.0.5
 
 * Added JOSS draft paper

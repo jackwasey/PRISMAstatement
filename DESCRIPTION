@@ -23,6 +23,7 @@ Suggests:
     knitr,
     rmarkdown,
     rsvg,
+    scales,
     testthat,
     utils
 VignetteBuilder: 
