@@ -221,23 +221,51 @@ prisma_pdf <- function(x, filename = "prisma.pdf") {
 
 #' Generic exclusions flow chart (beta)
 #'
-#' Generate the diagraph DOT description for a generic series of inclusions and exclusions
+#' Generate the diagraph DOT description for a generic series of inclusions and
+#' exclusions
 #' @examples
-#' PRISMAstatement:::exclusions_digraph(c(1000, 300, 150, 75, 38))
+#' flow_exclusions(c(1000, 300, 150, 75, 38))
 #' dot <-
-#'   PRISMAstatement:::exclusions_digraph(
+#'   flow_exclusions_dot(
 #'     incl_counts = c(972, 132, 77, 14),
 #'     total_label = "Total Screened",
 #'     incl_labels = c("Consented", "Completed Study", "BMI <= 30"),
 #'     excl_labels = c("Declined Consent", "Failed to Complete", "BMI > 30")
 #'     )
 #' DiagrammeR::grViz(dot)
-#' @param ... arguments passed to `scales::percent`
-#' @importFrom scales percent
+#' flow_exclusions(c(1000, 300, 150, 75, 38), percent_of_total = TRUE)
+#' flow_exclusions(c(100000, 3000, 1666, 411, 38),
+#'                 percent_of_prev = TRUE,
+#'                 show_count = FALSE)
+#' @param ... arguments passed to `scales::percent` and `DiagrammeR::grViz`
 #' @export
 #' @md
 #' @keywords internal
-exclusions_digraph <- function(
+flow_exclusions <- function(
+  incl_counts,
+  total_label = "Total",
+  incl_labels = LETTERS[seq_len(length(incl_counts) - 1)],
+  excl_labels = paste("Not ", incl_labels),
+  show_count = TRUE,
+  percent_of_total = FALSE,
+  percent_of_prev = FALSE,
+  font_size = 10, dpi = 72,
+  ...)
+  DiagrammeR::grViz(flow_exclusions_dot(
+    incl_counts = incl_counts,
+    total_label = total_label,
+    incl_labels = incl_labels,
+    excl_labels = excl_labels,
+    show_count = show_count,
+    percent_of_total = percent_of_total,
+    percent_of_prev = percent_of_prev,
+    font_size = font_size, dpi = dpi
+  ), ...)
+
+#' @describeIn flow_exclusions Just generate the DOT text
+#' @export
+#' @keywords internal
+flow_exclusions_dot <- function(
   incl_counts,
   total_label = "Total",
   incl_labels = LETTERS[seq_len(length(incl_counts) - 1)],
@@ -267,13 +295,13 @@ exclusions_digraph <- function(
   excl_nm <- paste0(excl_nm, "_", letters[seq_along(excl_nm)])
   stopifnot(!anyDuplicated(c(total_nm, incl_nm, excl_nm)))
   if (any(c(show_count, percent_of_total, percent_of_prev))) {
-    total_label %<>% paste0("\n")
-    incl_labels %<>% paste0("\n")
-    excl_labels %<>% paste0("\n")
+    total_label <- paste0(total_label, "\n")
+    incl_labels <- paste0(incl_labels, "\n")
+    excl_labels <- paste0(excl_labels, "\n")
     if (show_count) {
-      total_label %<>% paste0(total_count)
-      incl_labels %<>% paste0(incl_counts[-1])
-      excl_labels %<>% paste0(excl_counts)
+      total_label <- paste0(total_label, total_count)
+      incl_labels <- paste0(incl_labels, incl_counts[-1])
+      excl_labels <- paste0(excl_labels, excl_counts)
     }
     if (percent_of_total || percent_of_prev) {
       if (percent_of_total) {
@@ -286,9 +314,9 @@ exclusions_digraph <- function(
       incl_perc <- scales::percent(incl_frac, ...)
       excl_perc <- scales::percent(excl_frac, ...)
       gap = ifelse(show_count, " ", "")
-      total_label %<>% paste0(gap, "(100%)")
-      incl_labels %<>% paste0(gap, "(", incl_perc, ")")
-      excl_labels %<>% paste0(gap, "(", excl_perc, ")")
+      total_label <- paste0(total_label, gap, "(100%)")
+      incl_labels <- paste0(incl_labels, gap, "(", incl_perc, ")")
+      excl_labels <- paste0(excl_labels, gap, "(", excl_perc, ")")
     }
     # end any percentage
   }
@@ -318,4 +346,3 @@ exclusions_digraph <- function(
                     collapse = "\n")
   paste(dot_head, dot_labels, dot_arrows, dot_rank, "}", sep = "\n")
 }
-
