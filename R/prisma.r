@@ -274,8 +274,7 @@ flow_exclusions_dot <- function(
   percent_of_total = FALSE,
   percent_of_prev = FALSE,
   font_size = 10, dpi = 72,
-  ...)
-{
+  ...) {
   incl_counts <- as.integer(incl_counts)
   excl_counts <- incl_counts[-length(incl_counts)] - incl_counts[-1]
   total_count <- incl_counts[1]
@@ -313,7 +312,7 @@ flow_exclusions_dot <- function(
       }
       incl_perc <- scales::percent(incl_frac, ...)
       excl_perc <- scales::percent(excl_frac, ...)
-      gap = ifelse(show_count, " ", "")
+      gap <- ifelse(show_count, " ", "")
       total_label <- paste0(total_label, gap, "(100%)")
       incl_labels <- paste0(incl_labels, gap, "(", incl_perc, ")")
       excl_labels <- paste0(excl_labels, gap, "(", excl_perc, ")")
@@ -328,9 +327,9 @@ flow_exclusions_dot <- function(
     '
   dot_head <- sprintf(head_template, font_size, dpi)
 
-  label_template <- '%s [label="%s"];'
-  arrow_template <- '%s -> {%s; %s};'
-  rank_template <- '{rank=same; %s %s}'
+  label_template <- "%s [label=\"%s\"];"
+  arrow_template <- "%s -> {%s; %s};"
+  rank_template <- "{rank=same; %s %s}"
   dot_labels <- paste(sprintf(label_template,
                               c(total_nm, incl_nm, excl_nm),
                               c(total_label, incl_labels, excl_labels)),
