@@ -13,10 +13,8 @@ PRISMA flow charts are a special case of a common plot used in clinical research
 
 ```{r setup, include = FALSE}
 library(PRISMAstatement)
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+suppressPackageStartupMessages(library(DiagrammeR))
+knitr::opts_chunk$set(collapse = TRUE)
 ```
 
 ```{r genericflowexamples, fig.cap = "Fictitious study data, presenting just counts"}
