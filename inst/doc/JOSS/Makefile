@@ -9,6 +9,10 @@ paper.md: paper.utf8.md
 paper.pdf: paper.md
 	./paper.sh
 
+.PHONY: pdftest
+pdftest:
+	pandoc paper.md --filter pandoc-citeproc --bibliography paper.bib --bibliography r.bib -o paper.pdf
+
 #paper.tex: paper.md
 #	pandoc -o paper.tex paper.md
 

@@ -9,3 +9,4 @@ vignettes/*.tex
 paper.utf8.md
 paper.knit.md
 *.swp
+inst/doc/JOSS/paper.pdf
