@@ -4,7 +4,8 @@ Version: 1.1
 Authors@R: 
     person(given = "Jack O. Wasey",
            role = c("aut", "cre", "cph"),
-           email = "jack@jackwasey.com")
+           email = "jack@jackwasey.com",
+           comment = c(ORCID = "0000-0003-3738-4637"))
 Description: Plot a PRISMA <http://prisma-statement.org/> flow
     chart describing the identification, screening, eligibility and
     inclusion or studies in systematic reviews. The PRISMA statement
