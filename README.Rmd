@@ -15,10 +15,11 @@ knitr::opts_chunk$set(
 ```
 # PRISMAstatement
 
+[![CRAN status](https://www.r-pkg.org/badges/version/PRISMAstatement)](https://cran.r-project.org/package=PRISMAstatement)
 [![Travis build status](https://travis-ci.org/jackwasey/PRISMAstatement.svg?branch=master)](https://travis-ci.org/jackwasey/PRISMAstatement)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/jackwasey/PRISMAstatement?branch=master&svg=true)](https://ci.appveyor.com/project/jackwasey/PRISMAstatement)
 [![Coverage status](https://codecov.io/gh/jackwasey/PRISMAstatement/branch/master/graph/badge.svg)](https://codecov.io/github/jackwasey/PRISMAstatement?branch=master)
-[![CRAN status](https://www.r-pkg.org/badges/version/PRISMAstatement)](https://cran.r-project.org/package=PRISMAstatement)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-blue.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 PRISMAstatement is a simple package which does one thing: generate publication quality flow charts of study inclusions and exclusions following recommendations of the PRISMA statement. See the [vignette](https://cran.r-project.org/web/packages/PRISMAstatement/vignettes/PRISMA.html) for more details.
 
