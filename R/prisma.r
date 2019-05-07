@@ -46,7 +46,7 @@
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 6)
 #' prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 60)
 #' # giving impossible numbers should cause an error
-#' \donttest{
+#' \dontrun{
 #'   prisma(1, 2, 3, 4, 5, 6, 7, 8, 9)
 #' # giving unlikely numbers should cause a warning
 #'   prisma(1000, 20, 270, 270, 10, 260, 19, 240, 107)
@@ -68,6 +68,40 @@ prisma <- function(found,
                    ...,
                    dpi = 72,
                    font_size = 10) {
+  DiagrammeR::grViz(
+    prisma_graph(found = found,
+                 found_other = found_other,
+                 no_dupes = no_dupes,
+                 screened = screened,
+                 screen_exclusions = screen_exclusions,
+                 full_text = full_text,
+                 full_text_exclusions = full_text_exclusions,
+                 qualitative = qualitative,
+                 quantitative = quantitative,
+                 labels = labels,
+                 extra_dupes_box = extra_dupes_box,
+                 dpi = dpi,
+                 font_size = font_size,
+                 ...)
+  )
+}
+
+#' @describeIn prisma Generate the `dot` graph text
+#' @export
+prisma_graph <- function(found,
+                         found_other,
+                         no_dupes,
+                         screened,
+                         screen_exclusions,
+                         full_text,
+                         full_text_exclusions,
+                         qualitative,
+                         quantitative = NULL,
+                         labels = NULL,
+                         extra_dupes_box = FALSE,
+                         ...,
+                         dpi = 72,
+                         font_size = 10) {
   stopifnot(length(found) == 1)
   stopifnot(length(found_other) == 1)
   stopifnot(length(no_dupes) == 1)
@@ -171,8 +205,6 @@ prisma <- function(found,
     qual [label="%s"];
     quant [label="%s"];
   }'
-
-  DiagrammeR::grViz(
     sprintf(dot_template,
             font_size,
             dpi,
@@ -184,8 +216,7 @@ prisma <- function(found,
             labels$full_text,
             labels$full_text_exclusions,
             labels$qualitative,
-            labels$quantitative),
-    ...)
+            labels$quantitative)
 }
 
 paren <- function(n)
@@ -215,6 +246,31 @@ prisma_pdf <- function(x, filename = "prisma.pdf") {
   utils::capture.output({
     rsvg::rsvg_pdf(svg = charToRaw(DiagrammeRsvg::export_svg(x)),
                    file = filename)
+  })
+  invisible()
+}
+
+#' @describeIn prisma_pdf Export using any conversion function offered by `rsvg`
+#' @param rsvg_fun Function from `rsvg` default being `rsvg::rsvg_png`
+#' @param ... Passed to `rsvg_fun`
+#' @examples
+#' \dontrun{
+#' g_dot <- prisma_graph(9, 8, 7, 6, 1, 5, 1, 4, 1)
+#' prisma_export(g_dot, "test.png", rsvg_fun = rsvg::rsvg_png)
+#' }
+#' @export
+prisma_export <- function(x,
+                          filename = "prisma.png",
+                          rsvg_fun = rsvg::rsvg_png,
+                          ...) {
+  if (!requireNamespace("DiagrammeRsvg", quietly = TRUE) ||
+      !requireNamespace("rsvg", quietly = TRUE)) {
+    stop("DiagrammeRsvg and rsvg are both required for exporting PRISMA charts")
+  }
+  DiagrammeR::export_graph(x, file_name = filename, )
+  utils::capture.output({
+    rsvg_fun(svg = charToRaw(DiagrammeRsvg::export_svg(x)),
+             file = filename)
   })
   invisible()
 }

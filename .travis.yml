@@ -10,13 +10,7 @@ r:
   - devel
 
 r_packages:
-  - knitr
-  - rmarkdown
   - covr
-  - lintr
-#  - DiagrammeRsvg
-#  - rsvg
-#  - V8
 
 env:
   global:
@@ -34,5 +28,4 @@ notifications:
     on_failure: change
 
 after_success:
- - Rscript -e 'covr::coveralls()'
- - Rscript -e 'lintr::lint_package()'
+ - Rscript -e 'covr::codecov()'

@@ -2,12 +2,18 @@
 % Please edit documentation in R/prisma.r
 \name{prisma}
 \alias{prisma}
+\alias{prisma_graph}
 \title{Generate a PRISMA statement flow chart}
 \source{
 \url{http://prisma-statement.org/PRISMAStatement/FlowDiagram}
 }
 \usage{
 prisma(found, found_other, no_dupes, screened, screen_exclusions,
+  full_text, full_text_exclusions, qualitative, quantitative = NULL,
+  labels = NULL, extra_dupes_box = FALSE, ..., dpi = 72,
+  font_size = 10)
+
+prisma_graph(found, found_other, no_dupes, screened, screen_exclusions,
   full_text, full_text_exclusions, qualitative, quantitative = NULL,
   labels = NULL, extra_dupes_box = FALSE, ..., dpi = 72,
   font_size = 10)
@@ -64,6 +70,11 @@ Generate PRISMA statement flow chart for use in retrospective medical
 research. Almost all arguments are mandatory, as they are in the recommended
 PRISMA statement.
 }
+\section{Functions}{
+\itemize{
+\item \code{prisma_graph}: Generate the `dot` graph text
+}}
+
 \examples{
 prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107)
 prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107,
@@ -74,7 +85,7 @@ prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, extra_dupes_box = TRUE)
 prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 6)
 prisma(1000, 20, 270, 270, 10, 260, 20, 240, 107, font_size = 60)
 # giving impossible numbers should cause an error
-\donttest{
+\dontrun{
   prisma(1, 2, 3, 4, 5, 6, 7, 8, 9)
 # giving unlikely numbers should cause a warning
   prisma(1000, 20, 270, 270, 10, 260, 19, 240, 107)

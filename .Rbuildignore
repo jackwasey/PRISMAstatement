@@ -16,3 +16,5 @@ vignettes\/.*\.tex$
 ^bin$
 mergebib\.sh$
 ^COPYING$
+^doc$
+^Meta$

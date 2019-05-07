@@ -2,23 +2,40 @@
 % Please edit documentation in R/prisma.r
 \name{prisma_pdf}
 \alias{prisma_pdf}
+\alias{prisma_export}
 \title{Make PDF of the plot}
 \usage{
 prisma_pdf(x, filename = "prisma.pdf")
+
+prisma_export(x, filename = "prisma.png", rsvg_fun = rsvg::rsvg_png,
+  ...)
 }
 \arguments{
 \item{x}{output of call to \code{prisma}}
 
 \item{filename}{path of output file}
+
+\item{rsvg_fun}{Function from `rsvg` default being `rsvg::rsvg_png`}
+
+\item{...}{Passed to `rsvg_fun`}
 }
 \description{
 This makes a PDF file which can be included by knitr Sweave.
 }
+\section{Functions}{
+\itemize{
+\item \code{prisma_export}: Export using any conversion function offered by `rsvg`
+}}
+
 \examples{
 \dontrun{
 g <- prisma(9, 8, 7, 6, 5, 4, 3, 2, 1)
 prisma_pdf(g, "test.pdf")
 knitr::include_graphics("test.pdf")
+}
+\dontrun{
+g_dot <- prisma_graph(9, 8, 7, 6, 1, 5, 1, 4, 1)
+prisma_export(g_dot, "test.png", rsvg_fun = rsvg::rsvg_png)
 }
 }
 \keyword{internal}

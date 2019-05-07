@@ -3,4 +3,6 @@
 export(flow_exclusions)
 export(flow_exclusions_dot)
 export(prisma)
+export(prisma_export)
+export(prisma_graph)
 importFrom(utils,capture.output)

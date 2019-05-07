@@ -11,7 +11,7 @@ Description: Plot a PRISMA <http://prisma-statement.org/> flow
     inclusion or studies in systematic reviews. The PRISMA statement
     defines an evidence-based, minimal set of items for reporting in
     systematic reviews and meta-analyses. PRISMA should be used for the
-    reporting of studies evaluating randomized clinical trials (RCTs), and
+    reporting of studies evaluating randomized clinical trials (RCT), and
     is also for reporting on systematic reviews of other types of
     research.
 License: GPL-3
@@ -31,4 +31,4 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1.9000
