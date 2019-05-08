@@ -1,6 +1,6 @@
 #' Generic exclusions flow chart (beta)
 #'
-#' Generate the diagraph DOT description for a generic series of inclusions and
+#' Generate the DOT description for a series of inclusions and
 #' exclusions
 #' @examples
 #' flow_exclusions(c(1000, 300, 150, 75, 38))

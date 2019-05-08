@@ -1,6 +1,6 @@
 # PRISMAstatement news
 
-## Version 1.1
+## Version 1.1.0
 
 * Function to make generic flow charts with exclusions
 
@@ -20,7 +20,7 @@
 * added option of an additional box describing the (calculated) number of
   duplicates removed.
 * added option to customize the labels in each box
-* added numerical contraints on the inputs with errors and warnings. See
+* added numerical constraints on the inputs with errors and warnings. See
   the vignette and `?prisma` for details.
 
 ## Version 1.0.2

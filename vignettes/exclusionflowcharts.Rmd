@@ -2,7 +2,8 @@
 title: "Generic exclusion flow charts"
 author: "Jack O. Wasey"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Generic exclusion flow charts}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,7 +15,10 @@ PRISMA flow charts are a special case of a common plot used in clinical research
 ```{r setup, include = FALSE}
 library(PRISMAstatement)
 suppressPackageStartupMessages(library(DiagrammeR))
-knitr::opts_chunk$set(collapse = TRUE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 3
+  )
 ```
 
 ```{r genericflowexamples, fig.cap = "Fictitious study data, presenting just counts"}

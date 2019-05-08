@@ -18,3 +18,5 @@ mergebib\.sh$
 ^COPYING$
 ^doc$
 ^Meta$
+^codemeta\.json$
+^CRAN-RELEASE$

@@ -1,0 +1,155 @@
+{
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
+  "@type": "SoftwareSourceCode",
+  "identifier": "PRISMAstatement",
+  "description": "Plot a PRISMA <http://prisma-statement.org/> flow\n    chart describing the identification, screening, eligibility and\n    inclusion or studies in systematic reviews. The PRISMA statement\n    defines an evidence-based, minimal set of items for reporting in\n    systematic reviews and meta-analyses. PRISMA should be used for the\n    reporting of studies evaluating randomized clinical trials (RCT), and\n    is also for reporting on systematic reviews of other types of\n    research. There is also a function to generate flow charts describing\n    exclusions and inclusions for any kind of study.",
+  "name": "PRISMAstatement: Plot Flow Charts According to the \"PRISMA\" Statement",
+  "codeRepository": "https://github.com/jackwasey/PRISMAstatement",
+  "issueTracker": "https://github.com/jackwasey/PRISMAstatement/issues",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "1.1.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.6.0",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Organization",
+      "name": "Jack O. Wasey",
+      "email": "jack@jackwasey.com",
+      "@id": "https://orcid.org/0000-0003-3738-4637"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": [
+    {
+      "@type": "Organization",
+      "name": "Jack O. Wasey",
+      "email": "jack@jackwasey.com",
+      "@id": "https://orcid.org/0000-0003-3738-4637"
+    }
+  ],
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Organization",
+      "name": "Jack O. Wasey",
+      "email": "jack@jackwasey.com",
+      "@id": "https://orcid.org/0000-0003-3738-4637"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "DiagrammeRsvg",
+      "name": "DiagrammeRsvg",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=DiagrammeRsvg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rsvg",
+      "name": "rsvg",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rsvg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "scales",
+      "name": "scales",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=scales"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "DiagrammeR",
+      "name": "DiagrammeR",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=DiagrammeR"
+    }
+  ],
+  "releaseNotes": "https://github.com/jackwasey/PRISMAstatement/blob/master/NEWS.md",
+  "readme": "https://github.com/jackwasey/PRISMAstatement/blob/master/README.md",
+  "contIntegration": [
+    "https://travis-ci.org/jackwasey/PRISMAstatement",
+    "https://ci.appveyor.com/project/jackwasey/PRISMAstatement",
+    "https://codecov.io/github/jackwasey/PRISMAstatement?branch=master"
+  ],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#stable",
+  "relatedLink": "https://CRAN.R-project.org/package=PRISMAstatement"
+}

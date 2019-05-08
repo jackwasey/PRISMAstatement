@@ -29,7 +29,7 @@ formatting counts. Default is an empty list.}
 \item{...}{arguments passed to \code{flow_exclusions_dot}}
 }
 \description{
-Generate the diagraph DOT description for a generic series of inclusions and
+Generate the DOT description for a series of inclusions and
 exclusions
 }
 \section{Functions}{

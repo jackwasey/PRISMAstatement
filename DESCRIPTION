@@ -1,6 +1,6 @@
 Package: PRISMAstatement
 Title: Plot Flow Charts According to the "PRISMA" Statement
-Version: 1.1
+Version: 1.1.0
 Authors@R: 
     person(given = "Jack O. Wasey",
            role = c("aut", "cre", "cph"),
@@ -13,7 +13,8 @@ Description: Plot a PRISMA <http://prisma-statement.org/> flow
     systematic reviews and meta-analyses. PRISMA should be used for the
     reporting of studies evaluating randomized clinical trials (RCT), and
     is also for reporting on systematic reviews of other types of
-    research.
+    research. There is also a function to generate flow charts describing
+    exclusions and inclusions for any kind of study.
 License: GPL-3
 URL: https://github.com/jackwasey/PRISMAstatement
 BugReports: https://github.com/jackwasey/PRISMAstatement/issues
