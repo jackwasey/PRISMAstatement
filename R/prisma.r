@@ -145,6 +145,8 @@ prisma_graph <- function(found,
   if (full_text - full_text_exclusions != qualitative)
     warning("After full-text exclusions, a different number of remaining ",
             "articles for qualitative synthesis is stated.")
+  # apostrophes need to be replaced for grViz
+  labels <- lapply(labels, gsub, pattern = "'", replace = "&rsquo;")
   dupes <- found + found_other - no_dupes
   labels_orig <- list(
     found = pnl("Records identified through",
