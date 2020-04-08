@@ -1,7 +1,7 @@
 #' Generate a PRISMA statement flow chart
 #'
-#' Generate PRISMA statement flow chart for use in retrospective medical
-#' research. Almost all arguments are mandatory, as they are in the recommended
+#' Generate PRISMA statement flow chart for use in literature
+#' research and reviews. Almost all arguments are mandatory, as they are in the recommended
 #' PRISMA statement.
 #' @param found Records found through database searching
 #' @param found_other Additional records identified through other sources
